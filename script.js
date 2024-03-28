@@ -151,11 +151,9 @@ function saludo(id) {
           }
         }
       });
-      console.log(numeroSecreto)
       mostrarJuego(id);
     });
   } else {
-    console.log(numeroSecreto)
     mostrarJuego(id);
   }
 }
