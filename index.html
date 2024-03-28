@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>Mentalista</title>
+  </head>
+  <body>
+    <!-- Contenedor principal -->
+    <div class="container">
+      <!-- Título de la página -->
+      <h1 class="page-title">Mentalista</h1>
+      <!-- Botones para elegir el modo de juego -->
+      <div class="container-btn">
+        <button class="btn-simple" onclick="saludo('jugador')">Jugador</button>
+        <button class="btn-multi" onclick="saludo('multi')">
+          Multi-jugador
+        </button>
+      </div>
+      <div class="ingresaNombre">
+        <label for="nombre">Ingresa tu nombre</label><br />
+        <input class="input" id="nombre" type="text" name="nombre" />
+        <button type="button" id="irJuego">JUGAR</button>
+      </div>
+      <!-- Logo de la página -->
+      <img
+        src="https://user-images.githubusercontent.com/121910576/257302088-d2a9edb6-75e5-4118-aaba-6f53da7715dc.png"
+        class="page-logo"
+        alt=""
+      />
+    </div>
+
+    <!-- Sección para el juego de un solo jugador -->
+    <div id="jugador" class="un-jugador">
+      <!-- Parte izquierda: ingreso de nombre y número -->
+      <div class="left">
+        <h3 id="saludo"></h3>
+        <label for="numero">Ingresa un numero</label>
+        <input class="input" id="numero" type="text" name="numero" />
+        <button class="verificar" type="button" onclick="verificarIntento();">
+          Verificar
+        </button>
+      </div>
+      <a href="https://www.aluracursos.com/" target="_blank">
+        <img
+          src="https://www.aluracursos.com/assets/img/home/alura-logo.1686744883.svg"
+          alt=""
+          class="alura-latam-logo"
+        />
+        <img
+          src="https://caelum-online-public.s3.amazonaws.com/assets-imersaodev/Ilustra%C3%A7%C3%A3o-c%C3%A9rebro+1.png"
+        />
+      </a>
+      <!-- Parte derecha: resultados -->
+      <div class="rigth">
+        <h1>Resultados</h1>
+        <h3 id="resultado"></h3>
+        <img src="" alt="" id="imagenResultado" />
+        <div>
+          <h4 id="ultimoNumeroIngresado"></h4>
+        </div>
+        <div>
+          <h4 id="intentos"></h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección para el juego multijugador -->
+    <div id="multi" class="multi-jugador">
+      <!-- Parte izquierda: ingreso de cantidad de jugadores y nombres -->
+      <div class="left">
+        <div class="contenedorCantidad">
+          <label for="cantidad">Ingresa la cantidad de jugadores</label><br />
+          <input class="input" id="cantidad" type="number" name="cantidad" />
+          <button
+            class="btn-enviar"
+            type="button"
+            onclick="asignarJugadores();"
+          >
+            Enviar
+          </button>
+          <h6 class="error"></h6>
+        </div>
+        <div class="ingresaNombreJugadores">
+          <form id="formularioJugadores">
+            <!-- Aquí se agregarán dinámicamente los campos de entrada -->
+            <div id="camposJugadores"></div>
+            <button type="submit" id="agregarJugador">Agregar</button>
+          </form>
+        </div>
+        <!-- Se agregan los campos para ingresar nombres de jugadores dinámicamente con JavaScript -->
+        <div class="aJugar" style="display: none">
+          <h3 id="saludoJugadores"></h3>
+          <h2 id="turno"></h2>
+          <label for="numeroIngresado">Ingresa un numero</label><br />
+          <input class="input" id="numeroIngresado" type="text" name="numero" />
+          <button
+            class="verificar"
+            type="button"
+            onclick="verificarIntentoMulti();"
+          >
+            Verificar
+          </button>
+        </div>
+      </div>
+      <a href="https://www.aluracursos.com/" target="_blank">
+        <img
+          src="https://www.aluracursos.com/assets/img/home/alura-logo.1686744883.svg"
+          alt=""
+          class="alura-latam-logo"
+        />
+        <img
+          src="https://caelum-online-public.s3.amazonaws.com/assets-imersaodev/Ilustra%C3%A7%C3%A3o-c%C3%A9rebro+1.png"
+        />
+      </a>
+      <!-- Parte derecha: resultados -->
+      <div class="rigth">
+        <h1>Resultados</h1>
+        <!-- Tabla de resultados para cada jugador -->
+        <table id="tablaJugadores">
+          <thead>
+            <tr>
+              <th>Posicion</th>
+              <th>Jugador</th>
+              <th>Último número</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="posicion1"></td>
+              <td class="jugador1"></td>
+              <td class="ultimoNumero1"></td>
+            </tr>
+            <tr>
+              <td class="posicion2"></td>
+              <td class="jugador2"></td>
+              <td class="ultimoNumero2"></td>
+            </tr>
+            <tr>
+              <td class="posicion3"></td>
+              <td class="jugador3"></td>
+              <td class="ultimoNumero3"></td>
+            </tr>
+            <tr>
+              <td class="posicion4"></td>
+              <td class="jugador4"></td>
+              <td class="ultimoNumero4"></td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 id="resultadoMulti"></h3>
+        <div>
+          <h4 id="intentosMulti"></h4>
+        </div>
+        <!-- Imagen de resultado -->
+        <img src="" alt="" id="imagenResultadoMulti" />
+      </div>
+    </div>
+    <button
+      onclick="reiniciarJuego();"
+      class="container__boton"
+      id="reiniciar"
+      disabled
+    >
+      Nuevo juego
+    </button>
+  </body>
+</html>
